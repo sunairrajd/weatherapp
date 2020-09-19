@@ -5,12 +5,7 @@ var long = 0;
 var latt = 0;
 var winDeg;
 
-function showPosition(position) {
-  long = position.coords.longitude.toFixed(3);
-  latt = position.coords.latitude.toFixed(3);
-  console.log(latt);
-  console.log(long);
-}
+
 
 function mytime() {
 
@@ -65,7 +60,6 @@ function cold(temp) {
 
 
 
-
 function setup() {
 
 
@@ -73,15 +67,25 @@ function setup() {
    long = 0;
   latt = 0;
        let a = navigator.geolocation.getCurrentPosition(showPosition);
-
+       let renderer = createCanvas(800, 500);
+       renderer.parent("mycan");
 angleMode(DEGREES);
-  createCanvas(800, 500);
+
   // Define colors
   c1 = color(10,58,167);
   c2 = color(100,95,230);
  setGradient(c1, c2);
  // background('white');
   //noStroke();
+}
+
+
+function showPosition(position) {
+  long = position.coords.longitude.toFixed(3);
+  latt = position.coords.latitude.toFixed(3);
+  console.log(latt);
+  console.log(long);
+  draw();
 }
 
 
@@ -174,7 +178,7 @@ angleMode(DEGREES);
     fill('black');
     text(message, 10, 410, 270, 300);
   text(footer, 10, 470, 270, 300);
-    textSize(32);
+    textSize(12);
 
 
 }
