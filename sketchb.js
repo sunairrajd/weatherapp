@@ -22,7 +22,7 @@ function mytime() {
      setGradient(c1, c2);
   }
    else { samay = 'evening';
-   setGradient(c1, c2);
+   setGradient(a1, a2);
   }
   return samay;
             }
@@ -61,8 +61,13 @@ function setup() {
 angleMode(DEGREES);
 
   // Define colors
+  a1 = color(255,127,0);
+  a2 = color(255,177,0);
+
   c1 = color(0,59,255);
   c2 = color(126,0,252);
+
+
 
 
 
@@ -123,7 +128,7 @@ function gotData(data) {
 
     var message = 'As im writing you this ' +mymonth + ' ' + mytime()  +  '. The weather outside is ' +  main + 'y, ' + ' but it feels ' + cold(feelslikec);
 
-     var footer= '- From somewhere around ' + loc + '.' ;
+     var footer= 'From somewhere around ' + loc + '.' ;
 
 
 for(var x=0; x<800; x=x+50) {
@@ -153,11 +158,18 @@ for(var x=0; x<800; x=x+50) {
 
     angleMode(DEGREES);
     fill('white');
-    rect(0,400,300,100);
-    fill('black');
-    text(message, 15, 410, 270, 350);
-    text(footer, 15, 470, 270, 350);
-    textSize(12);
+    //rect(0,400,300,100);
+    //fill('black');
+    //text(message, 15, 410, 270, 350);
+  //  text(footer, 15, 470, 270, 350);
+  textSize(36);
+  textStyle(BOLD);
+  text(message, 10, 30, 400, 600);
+  textSize(18);
+  textStyle(BOLD);
+  text(footer, 10, 300, 400, 600);
+
+
     console.log(message)
     console.log(footer);
 
