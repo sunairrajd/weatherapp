@@ -14,11 +14,15 @@ function mytime() {
 
   if (ntime > 6 && ntime < 12){
      samay = 'morning';
+     setGradient(c1, c2);
+
   }
   else if (ntime > 12 && ntime < 16) {
      samay = 'afternoon';
+     setGradient(c1, c2);
   }
    else { samay = 'evening';
+   setGradient(c1, c2);
   }
   return samay;
             }
@@ -57,9 +61,12 @@ function setup() {
 angleMode(DEGREES);
 
   // Define colors
-  c1 = color(10,58,167);
-  c2 = color(100,95,230);
- setGradient(c1, c2);
+  c1 = color(0,59,255);
+  c2 = color(126,0,252);
+
+
+
+
  // background('white');
   //noStroke();
 }
@@ -81,7 +88,7 @@ function showPosition(position) {
   latt = position.coords.latitude.toFixed(3);
   console.log(latt);
   console.log(long);
-  redraw();
+  draw();
 }
 
 
@@ -120,6 +127,7 @@ function gotData(data) {
 
 
 for(var x=0; x<800; x=x+50) {
+  stroke(126,0,252);
   line(0,x,800,x);
   line(x,0,x,800);
 
@@ -128,13 +136,13 @@ for(var x=0; x<800; x=x+50) {
     for(var i=0; i<800; i=i+80) {
 
        for(var j=0; j<800; j=j+80) {
-         fill(186,0,255);
+         fill(226,0,255);
          noStroke();
         circle(i+40,j+40, 60);
 
            push();
           translate(i+40,j+40)
-           fill(244);
+           fill(255,226,0);
            rotate(winDeg);
          rectMode(CENTER);
            rect(0, 0, random(10,20), random(30,60));
@@ -147,8 +155,8 @@ for(var x=0; x<800; x=x+50) {
     fill('white');
     rect(0,400,300,100);
     fill('black');
-    text(message, 10, 410, 270, 300);
-    text(footer, 10, 470, 270, 300);
+    text(message, 15, 410, 270, 350);
+    text(footer, 15, 470, 270, 350);
     textSize(12);
     console.log(message)
     console.log(footer);
