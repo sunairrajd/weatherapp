@@ -31,41 +31,26 @@ function cold(temp) {
     let feelsstatement = ['cold','freezing cold','its artic out there']
     feels = feelsstatement[Math.floor(Math.random() * feelsstatement.length)];
   }
-
   if (temp > 20 && temp < 30){
-
     let feelsstatement = ['cozy','gloomy','a bit breezy']
      feels = feelsstatement[Math.floor(Math.random() * feelsstatement.length)];
-  }
-
+     }
   if (temp > 30 && temp < 36){
-
     let feelsstatement = ['bright and sunny','a bit hot']
     feels = feelsstatement[Math.floor(Math.random() * feelsstatement.length)];
   }
-
-   if (temp > 36 && temp < 60){
-
+  if (temp > 36 && temp < 60){
     let feelsstatement = ['burning hot','baking in the oven','like an furnace']
     feels = feelsstatement[Math.floor(Math.random() * feelsstatement.length)];
   }
-
   return feels;
-
 }
-
-
-
-
-
 
 
 function setup() {
 
-
-
    long = 0;
-  latt = 0;
+   latt = 0;
        let a = navigator.geolocation.getCurrentPosition(showPosition);
        let renderer = createCanvas(800, 500);
        renderer.parent("mycan");
@@ -78,6 +63,17 @@ angleMode(DEGREES);
  // background('white');
   //noStroke();
 }
+function setGradient(c1, c2) {
+ // noprotect
+ noFill();
+ for (var y = 0; y < height; y++) {
+   var inter = map(y, 0, height, 0, 1);
+   var c = lerpColor(c1, c2, inter);
+   stroke(c);
+   line(0, y, width, y);
+ }
+}
+
 
 
 function showPosition(position) {
@@ -85,29 +81,14 @@ function showPosition(position) {
   latt = position.coords.latitude.toFixed(3);
   console.log(latt);
   console.log(long);
-  draw();
+  redraw();
 }
-
-
-
-
- function setGradient(c1, c2) {
-  // noprotect
-  noFill();
-  for (var y = 0; y < height; y++) {
-    var inter = map(y, 0, height, 0, 1);
-    var c = lerpColor(c1, c2, inter);
-    stroke(c);
-    line(0, y, width, y);
-  }
- }
 
 
 function draw() {
 
     //Statement for lat, lon take through geo-location
   url = loadJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latt+ '&lon=' + long + '&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
-
 
 function gotData(data) {
 
@@ -124,13 +105,11 @@ function gotData(data) {
     //console.log(weather.main.temp_min);
    // console.log(winDeg);
     console.log(feelslikec);
-
-   console.log(loc);
+    console.log(loc);
    // console.log(main);
    // console.log(clouds);
     var today = new Date();
     dat = today.getMonth();
-  //  const today = new Date()
     console.log(cold(feelslikec));
 
    mymonth = today.toLocaleString('default', { month: 'long' })
@@ -164,21 +143,15 @@ for(var x=0; x<800; x=x+50) {
       }
 }
 
-angleMode(DEGREES);
-
-
-
-
-  console.log(message);
-
-    console.log(footer);
-
+    angleMode(DEGREES);
     fill('white');
- rect(0,400,300,100);
+    rect(0,400,300,100);
     fill('black');
     text(message, 10, 410, 270, 300);
-  text(footer, 10, 470, 270, 300);
+    text(footer, 10, 470, 270, 300);
     textSize(12);
+    console.log(message)
+    console.log(footer);
 
 
 }
