@@ -383,6 +383,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
     circle(800,random(0,480), random(clouds*3,clouds*8));
     circle(random(0,800),480, random(clouds*3,clouds*8));
     pop();
+    console.log('im putting black clouds');
   }
   else {
 
@@ -395,17 +396,28 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
     circle(800,random(0,480), random(clouds*3,clouds*8));
     circle(random(0,800),480, random(clouds*3,clouds*8));
     pop();
+    console.log('im putting white clouds');
   }
 //return cloudcolor;
+function circlo() {
+if (hourslice>=7 && hourslice<19) {
+
+  cicleincolor = '';
+
+}
+
+else {
+
+    cicleincolor = '255, 255, 255';
+}
+
+return cicleincolor;
+
+
+}
 
 
 
-
-
-
-
-
-{
     for(var i=0+feelslikecircle/2; i <800; i=i+feelslikecircle) {
 
        for(var j=0+feelslikecircle/2; j<440; j=j+feelslikecircle) {
@@ -423,7 +435,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
          noStroke();
          rotate(winDeg);
          rectMode(CENTER);
-         rect(0, 0, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle, feelslikecircle/5);
+         rect(0, 0, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle, feelslikecircle/4);
          pop();
 
         push();
@@ -438,7 +450,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
             pop();
        }
       }
-}
+
 
     angleMode(DEGREES);
     fill('white');
