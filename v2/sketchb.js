@@ -136,7 +136,7 @@ function draw()
 
     //Statement for lat, lon take through geo-location
 //url = loadJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latt+ '&lon=' + long + '&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
-url = loadJSON('http://api.openweathermap.org/data/2.5/weather?q=paris&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
+url = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=paris&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
 function gotData(data) {
 
    weather = data;
