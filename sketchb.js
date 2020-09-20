@@ -268,11 +268,12 @@ function gotData(data) {
 
   //  console.log(month);
     feelslike = weather.main.feels_like;
-    feelslikec = (feelslike-273.15)*1.8+32;
-    //feelslikec = (Math.round(feelslike-273.15));
+    feelslikef = (feelslike-273.15)*1.8+32;
+    feelslikec = (Math.round(feelslike-273.15));
     //feelslikecircle = Math.log2(feelslikec)*15;
-    feelslikecircle = feelslikec*0.5;
-    console.log('tempppppp in f ' + feelslikec);
+    feelslikecircle = feelslikef*0.5;
+    console.log('tempppppp in f ' + feelslikef);
+    console.log('tempppppp in c ' + feelslikec);
 
 
 
