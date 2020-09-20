@@ -1,0 +1,114 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
+    <div class="canvas">
+      <title>Weather Card - WIP</title>
+      <link rel="stylesheet" href="https://use.typekit.net/hmh6vfu.css">
+    </head>
+
+    <body>
+      <div class="text">
+      <h1>
+        Weather Card(W.I.P)</h1>
+        <p>
+          Trying to make a web app that can generate postcard design based on current weather around you. For suggestions, improvements and inspirations, contact me <a href="https://www.instagram.com/sunairrajd">sunair</a></p>
+</div>
+<div id ="mycan">
+  <script src="sketchb.js"></script>
+</div>
+<div id ="mycities">
+  <ul>
+    <li>London</li>
+    <li>Paris</li>
+    <li>Hyderabad</li>
+    <li> Leh</li>
+    <li>Jaisalmer</li>
+
+  </ul>
+</div>
+
+
+
+<style>
+.canvas {
+
+  margin:0px;
+}
+
+body{
+  margin: 50px auto;
+}
+
+
+#mycities {
+  width:800px;
+  height:500px;
+    margin: 30px auto;
+
+}
+
+#mycities ul {
+list-style: none;
+display:list-item;
+
+}
+#mycan
+
+{
+  width:800px;
+  height:480px;
+  margin: 30px auto;
+  display: flex;
+  border-radius: 10px;
+  /* This centers our sketch horizontally. */
+  justify-content: center;
+  /* This centers our sketch vertically. */
+  align-items: center;
+
+  -webkit-box-shadow: 0px 0px 30px -4px rgba(0,0,0,0.31);
+  -moz-box-shadow: 0px 0px 30px -4px rgba(0,0,0,0.31);
+  box-shadow: 0px 0px 30px -4px rgba(0,0,0,0.31);
+}
+
+h1{
+  font-size: 48px;
+  display: block;
+  font-family: ff-real-headline-pro, sans-serif;
+  font-weight: 700;
+  color: rgb(80,80,80);
+  font-style: normal;
+  line-height: 48px;
+  margin-bottom: 0px;
+
+
+
+/*  font-family: ff-real-text-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-family: ff-real-text-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal; */
+}
+
+p
+{
+text-align:left;
+font-family: ff-real-text-pro, sans-serif;
+font-weight: 400;
+color: rgb(80,80,80);
+font-style: normal;
+font-size: 14px;
+margin-top: 0px;
+}
+
+.text {
+
+width:800px;
+margin:0 auto;
+
+}
+</style>
+  </body>
+</html>
