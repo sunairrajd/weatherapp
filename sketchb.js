@@ -230,6 +230,8 @@ function gotData(data) {
    weather = data;
     winDeg = weather.wind.deg;
     clouds = weather.clouds.all;
+
+
     //
     winSpe = (weather.wind.speed);
     //winSpe =7;
@@ -370,8 +372,8 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
 
     push();
     noStroke();
-    blendMode(LIGHTEST);
-    fill(255,clouds*0.01*255*0.3);
+    blendMode(SOFT_LIGHT);
+    fill(255,clouds*0.01*255*0.9);
     circle(random(0,800),0, random(clouds*3,clouds*8));
     circle(0,random(0,480), random(clouds*3,clouds*8));
     circle(800,random(0,480), random(clouds*3,clouds*8));
@@ -405,7 +407,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
          noStroke();
          rotate(winDeg);
          rectMode(CENTER);
-         rect(0, 0, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle, 20);
+         rect(0, 0, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle, feelslikecircle/5);
          pop();
 
         push();
