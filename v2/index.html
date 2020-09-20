@@ -5,7 +5,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
     <div class="canvas">
       <title>Weather Card - WIP</title>
+
       <link rel="stylesheet" href="https://use.typekit.net/hmh6vfu.css">
+      <script>
+
+      </script>
     </head>
 
     <body>
@@ -16,17 +20,21 @@
           Trying to make a web app that can generate postcard design based on current weather around you. For suggestions, improvements and inspirations, contact me <a href="https://www.instagram.com/sunairrajd">sunair</a></p>
 </div>
 <div id ="mycan">
+  <p style="z-index:-1; position:absolute;" class="backtext">Wait until my shitty code loads </p>
   <script src="sketchb.js"></script>
 </div>
 <div id ="mycities">
   <ul>
-    <li>London</li>
-    <li>Paris</li>
-    <li>Hyderabad</li>
-    <li> Leh</li>
-    <li>Jaisalmer</li>
-
+    <li> <button id="mylocation">My Loc</button>
+      <button id="toronto">Toronto</button>
+      <button id="bangalore">Bangalore</button>
+      <button id="oslo">Oslo</button>
+      <button id="tokyo">Tokyo</button>
+    <button id="leh">Leh</button>
+    <button id="delhi">Delhi</button></li>
   </ul>
+
+  <h3>How does it work?</h3>
 </div>
 
 
@@ -73,10 +81,10 @@ display:list-item;
 }
 
 h1{
-  font-size: 48px;
+  font-size: 32px;
   display: block;
   font-family: ff-real-headline-pro, sans-serif;
-  font-weight: 700;
+  font-weight: 100;
   color: rgb(80,80,80);
   font-style: normal;
   line-height: 48px;
@@ -92,15 +100,58 @@ h1{
   font-style: normal; */
 }
 
+h3{
+  font-size: 24px;
+  display: block;
+  font-family: ff-real-headline-pro, sans-serif;
+  font-weight: 100;
+  color: rgb(80,80,80);
+  font-style: normal;
+  line-height: 48px;
+  margin-bottom: 0px;
+
+
+
+/*  font-family: ff-real-text-pro, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  font-family: ff-real-text-pro, sans-serif;
+  font-weight: 400;
+  font-style: normal; */
+}
+
+.backtext{
+
+  font-family: ff-real-text-pro, sans-serif;
+  font-weight: 300;
+  color: rgb(80,80,80);
+  font-style: normal;
+
+
+}
+
 p
 {
 text-align:left;
 font-family: ff-real-text-pro, sans-serif;
-font-weight: 400;
+font-weight: 300;
 color: rgb(80,80,80);
 font-style: normal;
 font-size: 14px;
-margin-top: 0px;
+margin-top: 5px;
+}
+
+ul
+{
+  padding-left:0px;
+}
+button {
+
+  padding:10px;
+  border:0px;
+  margin:0px 3px;
+  width:90px;
+  border-radius: 4px;
 }
 
 .text {

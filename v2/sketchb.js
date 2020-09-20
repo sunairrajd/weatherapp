@@ -7,6 +7,85 @@ var canw = 800;
 var canh = 480;
 var winDeg;
 var hours;
+var url;
+var cityname;
+
+
+
+function bangaloreselect()
+{
+apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=bangalore&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw();
+}
+function delhiselect()
+{
+apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=delhi&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw();
+}
+function osloselect()
+{
+apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=oslo&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw();
+}
+function lehselect()
+{
+apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=leh&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw();
+}
+
+
+function torontoselect()
+{
+apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=toronto&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw();
+}
+
+function tokyoselect()
+{
+apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw();
+}
+
+
+function myloca()
+{
+
+  setup();
+      // let a = navigator.geolocation.getCurrentPosition(showPosition);
+redraw();
+
+}
+
+
+
+
+window.onload = function() {
+
+var btnbangalore = document.getElementById("bangalore");
+btnbangalore.onclick = bangaloreselect;
+
+var btndelhi = document.getElementById("delhi");
+btndelhi.onclick = delhiselect;
+
+
+var btnoslo = document.getElementById("oslo");
+btnoslo.onclick = osloselect;
+
+
+var btnleh = document.getElementById("leh");
+btnleh.onclick = lehselect;
+
+var btntoronto = document.getElementById("toronto");
+btntoronto.onclick = torontoselect;
+
+var btntokyo = document.getElementById("tokyo");
+btntokyo.onclick = tokyoselect;
+
+
+var btnmylocation = document.getElementById("mylocation");
+btnmylocation.onclick = myloca;
+}
+
 
 
 
@@ -123,20 +202,26 @@ function setGradient(ca, cb) {
 function showPosition(position) {
   long = position.coords.longitude.toFixed(3);
   latt = position.coords.latitude.toFixed(3);
+  apiurl = 'https://api.openweathermap.org/data/2.5/weather?lat='+latt+ '&lon=' + long + '&appid=c24ced086a2cbb0eab00a4edecd652c9';
   console.log(latt);
   console.log(long);
   draw();
 }
 
 
+
+
 function draw()
 {
 
 
+  //url = loadJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latt+ '&lon=' + long + '&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
+url = loadJSON(apiurl, gotData);
+
 
     //Statement for lat, lon take through geo-location
 //url = loadJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latt+ '&lon=' + long + '&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
-url = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=paris&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
+//url = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=bangalore&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
 function gotData(data) {
 
    weather = data;
@@ -149,23 +234,37 @@ function gotData(data) {
     winSpeline = (1/winSpe)*80;
   //  console.log(winSpeline);
 
+
     loc = weather.name;
     time = weather.dt;
     timezone = weather.timezone;
-    shifttime = (timezone/60/60)
-    console.log(shifttime);
-  //currenttime = time+timezone;
-  //console.log(currenttime);
-    var date = new Date(time * 1000);
-    var hours = date.getHours();
-    var month = date.getMonth();
-    mymonth = date.toLocaleString('default', { month: 'long' });
+    minutesshifttimeuser = (timezone/60);
 
-    console.log(hours);
+    var date = new Date(time * 1000);
+    var month = date.getMonth();
+    var timezoneoffset = date.getTimezoneOffset();
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+
+    var totalminutes = (hours*60) + minutes;
+    var minutesatutclocation = totalminutes + timezoneoffset;
+    var minutesatinputlocation= minutesatutclocation + minutesshifttimeuser ;
+    var hoursatinputlocation = Math.floor(minutesatinputlocation/60);
+
+    console.log('timezone' + timezoneoffset);
+    console.log('timezonediffuser' + minutesshifttimeuser);
+    console.log('hours' + hours);
+    console.log('miutes' + minutes);
+    console.log('totalminutes' + totalminutes);
+    console.log('hoursatinputlocation' + hoursatinputlocation);
+
+
+
+
   //  console.log(month);
     feelslike = weather.main.feels_like;
     feelslikec = (Math.round(feelslike-273.15));
-    feelslikecircle = feelslikec*1.8;
+    feelslikecircle = feelslikec*2;
     //console.log(feelslikec);
 
 
@@ -185,32 +284,32 @@ function gotData(data) {
 
   function mytime() {
 
-    if (hours >= 0 && hours < 5){
+    if (hoursatinputlocation >= 0 && hoursatinputlocation < 5){
       samay = 'night';
       setGradient(e1, e2);
     }
 
-    else if (hours >= 6 && hours < 12){
+    else if (hoursatinputlocation >= 6 && hoursatinputlocation < 12){
        samay = 'morning';
        setGradient(a1, a2);
     }
 
-    else if (hours >= 12 && hours < 15) {
+    else if (hoursatinputlocation >= 12 && hoursatinputlocation < 15) {
        samay = 'afternoon';
        setGradient(c1, c2);
     }
 
-    else if (hours >= 15 && hours < 18) {
+    else if (hoursatinputlocation >= 15 && hoursatinputlocation < 18) {
        samay = 'evening';
         setGradient(c1, c2);
     }
 
-    else if (hours >= 18 && hours < 22) {
+    else if (hoursatinputlocation >= 18 && hoursatinputlocation < 22) {
        samay = 'night';
        setGradient(d1, d2);
     }
 
-    else if (hours >= 22 && hours < 24) {
+    else if (hoursatinputlocation >= 22 && hoursatinputlocation < 24) {
        samay = 'night';
        setGradient(e1,e2);
     }
@@ -221,7 +320,10 @@ function gotData(data) {
               }
 
 
-    var message = 'As im writing you this ' + mymonth + ' ' + mytime()  +  '. The weather outside is ' +  main + 'y, ' + cloudsfun(clouds)+ ' but it feels ' + cold(feelslikec);
+
+              mymonth = date.toLocaleString('default', { month: 'long' })
+
+    var message = 'As im writing you this '  + mymonth.toLowerCase() + ' ' + mytime()  +  '. The weather outside is ' +  main + 'y, ' + cloudsfun(clouds)+ ' but it feels ' + cold(feelslikec);
 
      var footer= 'From somewhere around ' + loc + '.' ;
 
@@ -248,7 +350,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
 
 
 
-  if (hours>6 && hours<18) {
+  if (hoursatinputlocation>6 && hoursatinputlocation<18) {
     push();
     noStroke();
     blendMode(MULTIPLY);
