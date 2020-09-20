@@ -246,31 +246,34 @@ function gotData(data) {
 
     loc = weather.name;
     time = weather.dt;
-    timezone = weather.timezone;
-    minutesshifttimeuser = (timezone/60);
-
-    var date = new Date(time * 1000);
-    var month = date.getMonth();
-    var timezoneoffset = date.getTimezoneOffset();
-    var hours = date.getHours();
-    var minutes = date.getMinutes();
-
-    var totalminutes = (hours*60) + minutes;
-    var minutesatutclocation = totalminutes + timezoneoffset;
-    var minutesatinputlocation= minutesatutclocation + minutesshifttimeuser ;
-    var hoursatinputlocation = Math.floor(minutesatinputlocation/60);
-
-    console.log('timezone' + timezoneoffset);
-    console.log('timezonediffuser' + minutesshifttimeuser);
-    console.log('hours' + hours);
-    console.log('miutes' + minutes);
-    console.log('totalminutes' + totalminutes);
-    console.log('hoursatinputlocation' + hoursatinputlocation);
 
 
+  var date = new Date(time * 1000);
+  var timezone = weather.timezone;
+  //var minutesshifttimeuser = (timezone/60);
+
+  var utcstamp = Math.floor((new Date()).getTime() / 1000);
+  var utcatlocation = utcstamp + timezone;
+  dateObj = new Date(utcatlocation * 1000);
+  utcString = dateObj.toUTCString();
+  hourslice = (utcString.slice(-12, -10))*1;
 
 
-  //  console.log(month);
+//console.log(timezone);
+
+//console.log(utcatlocation);
+//console.log(utcString);
+    console.log(hourslice);
+
+
+    //var hours = date.getHours();
+    //var minutes = date.getMinutes();
+
+
+
+
+
+
     feelslike = weather.main.feels_like;
     feelslikef = (feelslike-273.15)*1.8+32;
     feelslikec = (Math.round(feelslike-273.15));
@@ -296,41 +299,44 @@ function gotData(data) {
 
   function mytime() {
 
-    if (hoursatinputlocation >= 0 && hoursatinputlocation < 5){
+
+
+     if (hourslice >= 0 && hourslice < 5){
       samay = 'mid-night';
       setGradient(d1, d2);
     }
 
-    if (hoursatinputlocation >= 5 && hoursatinputlocation < 7){
+    else if (hourslice >= 5 && hourslice < 7){
       samay = 'mid-night';
       setGradient(e1, e2);
     }
 
-    else if (hoursatinputlocation >= 7 && hoursatinputlocation < 8){
+    else if (hourslice >= 7 && hourslice < 8){
        samay = 'early morning';
        setGradient(f1, f2);
     }
 
-    else if (hoursatinputlocation >= 8 && hoursatinputlocation < 12) {
+    else if (hourslice >= 8 && hourslice < 12) {
        samay = 'morning';
        setGradient(f1, f2);
     }
 
-    else if (hoursatinputlocation >= 12 && hoursatinputlocation < 15) {
+    else if (hourslice >= 12 && hourslice < 15) {
        samay = 'afternoon';
         setGradient(a1, a2);
     }
 
-    else if (hoursatinputlocation >= 15 && hoursatinputlocation < 19) {
+    else if (hourslice >= 15 && hourslice < 19) {
        samay = 'evening';
        setGradient(b1, b2);
     }
 
-    else if (hoursatinputlocation >= 19 && hoursatinputlocation < 24) {
+    else if (hourslice >= 19 && hourslice < 24) {
        samay = 'night';
        setGradient(c1,c2);
     }
-     else { samay = 'nnt';
+     else {
+      samay = 'not working';
      setGradient(b1,b2);
     }
     return samay;
@@ -338,7 +344,7 @@ function gotData(data) {
 
 
 
-              mymonth = date.toLocaleString('default', { month: 'long' })
+              mymonth = date.toLocaleString('default', { month: 'long' });
 
     var message = 'As im writing you this '  + mymonth.toLowerCase() + ' ' + mytime()  +  '. The weather outside is ' +  main + 'y, ' + cloudsfun(clouds)+ ' but it feels ' + cold(feelslikec);
 
@@ -367,7 +373,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
 
 
 
-  if (hoursatinputlocation>6 && hoursatinputlocation<18) {
+  if (hourslice>=7 && hourslice<=19) {
     push();
     noStroke();
     blendMode(SOFT_LIGHT);
@@ -441,8 +447,9 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
     //text(message, 15, 410, 270, 350);
   //  text(footer, 15, 470, 270, 350);
   textSize(36);
-  noStroke();
+  stroke(100);
   textStyle(BOLD);
+  textLeading(38);
   text(message, 15, 15, 400, 600);
   textSize(18);
   textStyle(BOLD);
