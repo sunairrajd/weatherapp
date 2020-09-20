@@ -22,9 +22,9 @@ function delhiselect()
 apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=delhi&appid=c24ced086a2cbb0eab00a4edecd652c9';
 redraw();
 }
-function osloselect()
+function qenaselect()
 {
-apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=oslo&appid=c24ced086a2cbb0eab00a4edecd652c9';
+apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=qena&appid=c24ced086a2cbb0eab00a4edecd652c9';
 redraw();
 }
 function lehselect()
@@ -40,11 +40,13 @@ apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=toronto&appid=c24ced
 redraw();
 }
 
-function tokyoselect()
+function reykjavikselect()
 {
-apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=tokyo&appid=c24ced086a2cbb0eab00a4edecd652c9';
+apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=reykjavik&appid=c24ced086a2cbb0eab00a4edecd652c9';
 redraw();
 }
+
+
 
 
 function myloca()
@@ -68,8 +70,8 @@ var btndelhi = document.getElementById("delhi");
 btndelhi.onclick = delhiselect;
 
 
-var btnoslo = document.getElementById("oslo");
-btnoslo.onclick = osloselect;
+var btnqena = document.getElementById("qena");
+btnqena.onclick = qenaselect;
 
 
 var btnleh = document.getElementById("leh");
@@ -78,8 +80,8 @@ btnleh.onclick = lehselect;
 var btntoronto = document.getElementById("toronto");
 btntoronto.onclick = torontoselect;
 
-var btntokyo = document.getElementById("tokyo");
-btntokyo.onclick = tokyoselect;
+var btnreykjavik = document.getElementById("reykjavik");
+btnreykjavik.onclick = reykjavikselect;
 
 
 var btnmylocation = document.getElementById("mylocation");
@@ -115,7 +117,8 @@ function cold(temp) {
     feels = feelsstatement[Math.floor(Math.random() * feelsstatement.length)];
   }
   else {
-    feels = "cant find the time";
+    let feelsstatement = ['freeeeezing cold']
+    feels = feelsstatement[Math.floor(Math.random() * feelsstatement.length)];
   }
   return feels;
 }
@@ -263,9 +266,11 @@ function gotData(data) {
 
   //  console.log(month);
     feelslike = weather.main.feels_like;
-    feelslikec = (Math.round(feelslike-273.15));
-    feelslikecircle = feelslikec*2;
-    //console.log(feelslikec);
+    feelslikec = (feelslike-273.15)*1.8+32;
+    //feelslikec = (Math.round(feelslike-273.15));
+    //feelslikecircle = Math.log2(feelslikec)*15;
+    feelslikecircle = feelslikec*0.5;
+    console.log('tempppppp in f ' + feelslikec);
 
 
 
@@ -353,8 +358,8 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
   if (hoursatinputlocation>6 && hoursatinputlocation<18) {
     push();
     noStroke();
-    blendMode(MULTIPLY);
-    fill(0,clouds*0.01*255*0.2);
+    blendMode(SOFT_LIGHT);
+    fill(0,clouds*0.01*255*0.9);
     circle(random(0,800),0, random(clouds*3,clouds*8));
     circle(0,random(0,480), random(clouds*3,clouds*8));
     circle(800,random(0,480), random(clouds*3,clouds*8));
@@ -366,7 +371,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
     push();
     noStroke();
     blendMode(LIGHTEST);
-    fill(255,clouds*0.01*255*0.2);
+    fill(255,clouds*0.01*255*0.3);
     circle(random(0,800),0, random(clouds*3,clouds*8));
     circle(0,random(0,480), random(clouds*3,clouds*8));
     circle(800,random(0,480), random(clouds*3,clouds*8));
@@ -383,9 +388,9 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
 
 
 {
-    for(var i=0; i <800; i=i+feelslikecircle) {
+    for(var i=0+feelslikecircle/2; i <800; i=i+feelslikecircle) {
 
-       for(var j=0; j<440; j=j+feelslikecircle) {
+       for(var j=0+feelslikecircle/2; j<440; j=j+feelslikecircle) {
 
 
          push();
@@ -400,7 +405,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
          noStroke();
          rotate(winDeg);
          rectMode(CENTER);
-         rect(0, 0, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle-5, 20);
+         rect(0, 0, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle, 20);
          pop();
 
         push();
