@@ -167,20 +167,24 @@ function setup() {
 angleMode(DEGREES);
 
   // Define colors
-  a1 = color(230,130,99);
-  a2 = color(247,212,98);
+  a1 = color(252,87,0);
+  a2 = color(255,179,5);
 
-  b1 = color(0,59,255);
-  b2 = color(126,0,252);
+  b1 = color(254,174,4);
+  b2 = color(120,2,252);
 
-  c1 = color(230,130,99);
-  c2 = color(247,212,98);
+  c1 = color(132,18,227);
+  c2 = color(4,49,198);
 
-  d1 = color(95,74,211);
-  d2 = color(19,14,141);
+  d1 = color(15,57,227);
+  d2 = color(5,1,101);
 
-  e1 = color(27,4,160);
-  e2 = color(12,28,82);
+  e1 = color(5,1,102);
+  e2 = color(100,0,170);
+
+
+  f1 = color(100,0,170);
+  f2 = color(252,87,0);
 
 
 
@@ -293,33 +297,38 @@ function gotData(data) {
   function mytime() {
 
     if (hoursatinputlocation >= 0 && hoursatinputlocation < 5){
-      samay = 'night';
+      samay = 'mid-night';
+      setGradient(d1, d2);
+    }
+
+    if (hoursatinputlocation >= 5 && hoursatinputlocation < 7){
+      samay = 'mid-night';
       setGradient(e1, e2);
     }
 
-    else if (hoursatinputlocation >= 6 && hoursatinputlocation < 12){
+    else if (hoursatinputlocation >= 7 && hoursatinputlocation < 8){
+       samay = 'early morning';
+       setGradient(f1, f2);
+    }
+
+    else if (hoursatinputlocation >= 8 && hoursatinputlocation < 12) {
        samay = 'morning';
-       setGradient(a1, a2);
+       setGradient(f1, f2);
     }
 
     else if (hoursatinputlocation >= 12 && hoursatinputlocation < 15) {
        samay = 'afternoon';
-       setGradient(c1, c2);
+        setGradient(a1, a2);
     }
 
-    else if (hoursatinputlocation >= 15 && hoursatinputlocation < 18) {
+    else if (hoursatinputlocation >= 15 && hoursatinputlocation < 19) {
        samay = 'evening';
-        setGradient(c1, c2);
+       setGradient(b1, b2);
     }
 
-    else if (hoursatinputlocation >= 18 && hoursatinputlocation < 22) {
+    else if (hoursatinputlocation >= 19 && hoursatinputlocation < 24) {
        samay = 'night';
-       setGradient(d1, d2);
-    }
-
-    else if (hoursatinputlocation >= 22 && hoursatinputlocation < 24) {
-       samay = 'night';
-       setGradient(e1,e2);
+       setGradient(c1,c2);
     }
      else { samay = 'nnt';
      setGradient(b1,b2);
@@ -362,7 +371,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
     push();
     noStroke();
     blendMode(SOFT_LIGHT);
-    fill(0,clouds*0.01*255*0.9);
+    fill(0,clouds*0.01*255);
     circle(random(0,800),0, random(clouds*3,clouds*8));
     circle(0,random(0,480), random(clouds*3,clouds*8));
     circle(800,random(0,480), random(clouds*3,clouds*8));
@@ -374,7 +383,7 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
     push();
     noStroke();
     blendMode(SOFT_LIGHT);
-    fill(255,clouds*0.01*255*0.9);
+    fill(255,clouds*0.01*255);
     circle(random(0,800),0, random(clouds*3,clouds*8));
     circle(0,random(0,480), random(clouds*3,clouds*8));
     circle(800,random(0,480), random(clouds*3,clouds*8));
