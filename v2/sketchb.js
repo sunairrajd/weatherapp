@@ -426,10 +426,10 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
   textSize(36);
   noStroke();
   textStyle(BOLD);
-  text(message, 10, 30, 400, 600);
+  text(message, 15, 15, 400, 600);
   textSize(18);
   textStyle(BOLD);
-  text(footer, 10, 300, 400, 600);
+  text(footer, 15, 300, 400, 600);
 
 
     console.log(message)
