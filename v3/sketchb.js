@@ -426,9 +426,9 @@ return cicleincolor;
 
 
 
-    for(var i=0+feelslikecircle/2; i <800; i=i+feelslikecircle) {
+    for(var i=0+feelslikecircle/2; i <800; i=i+feelslikecircle*1) {
 
-       for(var j=0+feelslikecircle/2; j<440; j=j+feelslikecircle) {
+       for(var j=0+feelslikecircle/2; j<440; j=j+feelslikecircle*1) {
 
 
          push();
@@ -440,12 +440,12 @@ return cicleincolor;
 
          push();
          noStroke();
-         translate(i*1.5,j*1.5);
+         translate(i*1.8,j*1.8);
          rotate(winDeg);
             fill(226,0,255);
            arc(0, 0, feelslikecircle, feelslikecircle, 0, 180);
            fill(255,226,0);
-        triangle(-feelslikecircle/2, 0, +feelslikecircle/2, 0, 0, -feelslikecircle);
+        triangle((-feelslikecircle/2)*1.01, 0, +(feelslikecircle/2)*1.01, 0, 0, -feelslikecircle);
             fill(226,255,255);
           // circle(0,0, 10);
            pop();
@@ -462,7 +462,7 @@ return cicleincolor;
 
         push();
 
-        translate(i*1.5,j*1.5);
+        translate(i*1.8,j*1.8);
         blendMode(MULTIPLY);
         rotate(winDeg);
         noStroke();
