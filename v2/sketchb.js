@@ -318,7 +318,7 @@ function gotData(data) {
 
     else if (hourslice >= 8 && hourslice < 12) {
        samay = 'morning';
-       setGradient(f1, f2);
+       setGradient(b2, b1);
     }
 
     else if (hourslice >= 12 && hourslice < 15) {
