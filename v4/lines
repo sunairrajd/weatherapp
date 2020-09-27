@@ -1,0 +1,109 @@
+weather = ['cloudy', 'Hazy', 'Rainy', 'Cleary', 'Sonwy', 'smokey'];
+daytime = ['morning', 'afternoon', 'evening', 'night'];
+months = ['January', 'April', 'December', 'July', 'September'];
+temp = ['Hot', 'Cold', 'great', 'warm', 'freezing cold'];
+clouds = ['clear', 'cloudy', 'dark and cloudy', 'scattered clouds', 'a bit cloudy'];
+test = ['December', 'september'];
+mymonth = ['December', 'september'];
+mylocation = ['Hyderabad', 'Bengaluru'];
+hrsfromsun = ['sunset is far', 'sunset is here', 'sunset is near'];
+myday = ['sunday', 'monday'];
+windspeed =['windy, stormy, breezy']
+
+cricket silent
+
+     "cricket falls silent",
+     "a frog jumps",
+     Donkeys aflank
+       "the worm wiggles ",
+       At breakfast"
+, "february walk",
+"february morning walk",
+"february is here",
+"A hot february walk",
+"an orange traffic cone",
+"an orange traffic cone in december",
+ "december traffic",
+  "Morning traffic",
+  "a parrot asks",
+    "a parrot asks <rb>",
+   "a cat watches traffic",
+      "a cat watches morning traffic",
+      "a cat watches windy morning traffic",
+        "a cat watches cold morning traffic",
+    "over traffic noise",
+    "peak hour traffic",
+    "the parrot sings <rb'>",
+    "empty bottle <vbz> <rb>"
+    ,"spider webs and plastic bags",
+     "Someone is upset",
+      "the parrots lived upon the sofa",
+         "empty bottle",
+          "a loudspeaker barks",
+          "under the trees",
+          "tangerine oil",
+           "last years leaves",
+            "a frog jumps",
+             "I recycle a dream",
+             "the voices of crows",
+              "a family of raccoons",
+               "trembling leaves",
+               "Donkeys aflank",
+                "rush-hour morning traffic",
+                "the worm wiggles <rb>",
+                "a silkworm spinning",
+                "an inchworm stretches",
+                 " a worm digs silently still",
+                   "cats and dogs",
+                   "a sparrow bathes",
+                    "the sunflower drips"
+                    , "a sparrow takes a dust bath",
+                     "a sparrow chips",
+                     "road and sky align",
+                     "Heard from a sparrow",
+                      "of a chipping sparrow ",
+                       "Rejected city",
+                        " crumbling bridges and roads",
+                         " bus didnt come",
+                         "a butterfly trapped",
+                         "an unknown bird",
+                          "a robins flight"];
+                          Traffic light turn red",
+                           "An ant climbs",
+                             "The birds cry",
+                             "Bullfrogs croak",
+                             "A cow stares the road",
+                             "The ocean's loud",
+                              "Along the highway",
+                               "Buzzards wait",
+                                "Dead batteries",
+                                 "Leaves fall",
+                                  "Two butterflies warm the road",
+                                   "the cat watches",
+                                   "Who cares how stocks did",
+                                    "Obama is busy",
+                                     "Butterfly wings clap" ,
+                                      "my shadow grows <rb>",
+                                        "my shadow grows <rb>",
+                                        "A taste of "+ fmonth +"	in her kiss"
+
+
+                                         Good morning from hyderbad
+                                          Somewhere around bangalore
+                                           bangalore Says hi" +
+                                         Wishes from hyderabad
+                                         with love from hyderabad
+
+
+
+                                        At clear morning  in  September
+                                        An morning in march
+                                      s
+                                        March postcards
+                                        Evening is falling
+                                        July morning will soon end.
+                                        Morning stillness
+                                        Evening of Saturday
+                                        Saturday Evening
+                                        Morning Traffic
+                                        Hazy morning

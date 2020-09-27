@@ -170,8 +170,9 @@ angleMode(DEGREES);
   a1 = color(252,87,0);
   a2 = color(255,179,5);
 
-  b1 = color(254,174,4);
-  b2 = color(120,2,252);
+  b1 = color(120,2,252);
+  b2 = color(254,174,4);
+
 
   c1 = color(132,18,227);
   c2 = color(4,49,198);
@@ -234,6 +235,8 @@ function gotData(data) {
    weather = data;
     winDeg = weather.wind.deg;
     clouds = weather.clouds.all;
+    mylatitude = weather.coord.lat;
+    mylongitude = weather.coord.lat;
 
 
     //
@@ -281,6 +284,8 @@ function gotData(data) {
     feelslikecircle = feelslikef*0.5;
     console.log('tempppppp in f ' + feelslikef);
     console.log('tempppppp in c ' + feelslikec);
+    console.log('my latitude ' + mylatitude);
+    console.log('my latitude ' + mylongitude);
 
 
 
@@ -318,7 +323,7 @@ function gotData(data) {
 
     else if (hourslice >= 8 && hourslice < 12) {
        samay = 'morning';
-       setGradient(b2, b1);
+       setGradient(b1, b2);
     }
 
     else if (hourslice >= 12 && hourslice < 15) {

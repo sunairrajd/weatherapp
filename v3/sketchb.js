@@ -445,7 +445,7 @@ return cicleincolor;
             fill(226,0,255);
            arc(0, 0, feelslikecircle, feelslikecircle, 0, 180);
            fill(255,226,0);
-        triangle((-feelslikecircle/2)*1.01, 0, +(feelslikecircle/2)*1.01, 0, 0, -feelslikecircle);
+        triangle((-feelslikecircle/2), -1, +(feelslikecircle/2), -1, 0, -feelslikecircle);
             fill(226,255,255);
           // circle(0,0, 10);
            pop();
