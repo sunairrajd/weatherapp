@@ -483,70 +483,70 @@ else {
 }
 
 
-    for(var i=0+feelslikecircle/2; i <800; i=i+feelslikecircle) {
+    // for(var i=0+feelslikecircle/2; i <800; i=i+feelslikecircle) {
+    //
+    //    for(var j=0+feelslikecircle/2; j<440; j=j+feelslikecircle) {
+    //
 
-       for(var j=0+feelslikecircle/2; j<440; j=j+feelslikecircle) {
+
+    for(var i=40; i <800; i=i+80) {
+
+       for(var j=40; j<480; j=j+80) {
 
 
+
+
+        //
         //  push();
         //  noStroke();
-        //  blendMode(SOFT_LIGHT);
-        //  fill(226,255,255);
-        //  circle(i*1.8,j*1.8,feelslikecircle*1.2);
+        //  fill(255,0,255);
+        //  circle(i*1.7,j*1.7,feelslikecircle);
         //  pop()
         //
         //  push();
-        //  translate(i*(feelslikecircle/15),j*(feelslikecircle/15));
-        //  fill(255,0,255);
-        //   noStroke();
-        //
-        //  // blendMode(SCREEN);
-        //  blendMode(HARD_LIGHT);
-        //  stroke(0);
-        //  strokeWeight(1);
-        //  noFill();
+        //  translate(i*1.7,j*1.7);
+        //  fill(255,226,0);
+        //  noStroke();
         //  rotate(winDeg);
         //  rectMode(CENTER);
-        // rect(feelslikecircle/9, feelslikecircle/9,  feelslikecircle/3, feelslikecircle*1.2);
+        //  // rect(feelslikecircle/9, feelslikecircle/9, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle, feelslikecircle/4);
+        //  rect(feelslikecircle/9, feelslikecircle/9, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle*1.2, feelslikecircle/4);
         //  pop();
         //
         // push();
-        //
-        // translate(i*1.8,j*1.8);
+        // translate(i*1.7,j*1.7);
         // blendMode(MULTIPLY);
         // rotate(winDeg);
         // noStroke();
         // fill(0, 50);
-        // circle(0,feelslikecircle/2*0.7,feelslikecircle/6);
-        // pop();
-        //
+        // circle(feelslikecircle/9,feelslikecircle/2*0.7,feelslikecircle/6);
 
+            // pop();
 
 
             push();
             noStroke();
             fill(255,0,255);
-            circle(i*1.7,j*1.7,feelslikecircle);
+            circle(i,j,feelslikecircle);
             pop()
 
             push();
-            translate(i*1.7,j*1.7);
+            translate(i,j);
             fill(255,226,0);
             noStroke();
             rotate(winDeg);
             rectMode(CENTER);
             // rect(feelslikecircle/9, feelslikecircle/9, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle, feelslikecircle/4);
-            rect(feelslikecircle/9, feelslikecircle/9, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle*1.2, feelslikecircle/4);
+            rect(0, 0, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle*1.2, feelslikecircle/4);
             pop();
 
            push();
-
-           translate(i*1.7,j*1.7);
+           translate(i,j);
            blendMode(MULTIPLY);
            rotate(winDeg);
            noStroke();
            fill(0, 50);
-           circle(feelslikecircle/9,feelslikecircle/2*0.7,feelslikecircle/6);
+           circle(0,feelslikecircle/2*0.7,feelslikecircle/6);
 
                pop();
         }
