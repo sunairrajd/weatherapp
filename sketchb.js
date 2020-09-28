@@ -423,7 +423,7 @@ function gotData(data) {
 
 
   push();
-  strokeWeight(2);
+  strokeWeight(1);
   stroke(255,255,255, 80);
 
   blendMode(HARD_LIGHT);
@@ -710,12 +710,12 @@ rg2.addRule("<locationdeg>", mylatitude +', ' + mylongitude +" | " + fmylocation
 
 
                       rg2.addRule("<start>","<word-5>", 1);
-                      endstatement = rg2.expand();
+                    endstatement = rg2.expand();
 
                      rs = new RiString(endstatement);
 
 
-                      text(rs.toUpperCase(), 0, 0);
+                     text(rs.toUpperCase(), 0, 0);
                       console.log(endstatement);
                       pop();
 

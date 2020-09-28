@@ -462,10 +462,10 @@ return cicleincolor;
   stroke(100);
   textStyle(BOLD);
   textLeading(38);
-  text(message, 15, 15, 400, 600);
+  //text(message, 15, 15, 400, 600);
   textSize(18);
   textStyle(BOLD);
-  text(footer, 15, 300, 400, 600);
+  //text(footer, 15, 300, 400, 600);
 
 
     console.log(message)
