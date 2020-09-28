@@ -1,8 +1,10 @@
 <html>
   <head>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.11/addons/p5.sound.min.js"></script> -->
+    <script src="./rita-full.min.js"></script>
+
     <div class="canvas">
       <title>Weather Card - WIP</title>
 
@@ -17,7 +19,7 @@
       <h1>
         Weather Card(W.I.P)</h1>
         <p>
-          Trying to make a web app that can generate postcard design based on current weather around you. For suggestions, improvements and inspirations, contact me <a href="https://www.instagram.com/sunairrajd">sunair</a></p>
+          Trying to make a web app that can generate postcard design based on current weather around you. For suggestions, improvements and inspirations,<a href="https://www.instagram.com/sunairrajd">contact me</a></p>
 </div>
 <div id ="mycan">
   <p style="z-index:-1; position:absolute;" class="backtext">Wait until my shitty code loads </p>
@@ -31,17 +33,23 @@
       <button id="qena">Qena</button>
       <button id="reykjavik">Reykjavík</button>
     <button id="leh">Leh</button>
+      <button id="honolulu">Honolulu</button>
     <button id="delhi">Delhi</button></li>
 
+
   </ul>
-<p class ="lighttext">Made it using P5.js and openweathermapAPI</p>
+<p class ="lighttext"><a id="print" style="background: none; color:rgb(255,0,255);    padding:6px;   width:40px;">Print</a></li> | Made it using <a href = "https://p5js.org/"> P5.js </a>, <a href ="https://rednoise.org/rita/index.php"> Rita.js</a> and <a href = "https://openweathermap.org/">openweathermapAPI</a></p>
   <h3>How does it work?</h3>
     <p>Well, i'm more than happy that it just works....</p>
 
-    <p>Will update legends clearly once it gets completed. But for now yellow dial represents wind direction, The size of pink circles represent the temperature at the moment, background of the canvas is time of the day, fading circles in the background represent cloudcover and intensity of stripes represent wind speed. </p>
+    <p>Will update legends clearly once it gets completed. But for now yellow dial represents wind direction, The size of pink circles represent the temperature at the moment, background of the canvas is time of the day, fading circles in the background represent cloudcover and intensity of stripes represent wind speed. Also print works sometime. </p>
 </div>
 
+<script>
 
+
+
+</script>
 
 <style>
 .canvas {
@@ -61,6 +69,11 @@ body{
 
 }
 
+a {
+
+
+text-decoration: none;
+}
 #mycities ul {
 list-style: none;
 display:list-item;
@@ -139,8 +152,8 @@ h3{
 font-size:13px;
 font-style: italic;
 color:rgb(170,170,170);
-font-weight: 300;
-text-align:right;
+font-weight: 200;
+text-align:left;
 
 
 }

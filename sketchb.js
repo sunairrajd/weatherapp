@@ -9,55 +9,44 @@ var winDeg;
 var hours;
 var url;
 var cityname;
+var pdf;
+var rg;
+var rm;
+var lexicon;
+
+
 
 
 
 function bangaloreselect()
-{
-apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=bangalore&appid=c24ced086a2cbb0eab00a4edecd652c9';
-redraw();
-}
+{ apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=bangalore&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw(); }
 function delhiselect()
-{
-apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=delhi&appid=c24ced086a2cbb0eab00a4edecd652c9';
-redraw();
-}
+{ apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=delhi&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw(); }
 function qenaselect()
-{
-apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=qena&appid=c24ced086a2cbb0eab00a4edecd652c9';
-redraw();
-}
+{ apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=qena&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw(); }
 function lehselect()
-{
-apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=leh&appid=c24ced086a2cbb0eab00a4edecd652c9';
-redraw();
-}
-
-
+{ apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=leh&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw(); }
 function torontoselect()
-{
-apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=toronto&appid=c24ced086a2cbb0eab00a4edecd652c9';
-redraw();
-}
-
+{ apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=toronto&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw(); }
 function reykjavikselect()
-{
-apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=reykjavik&appid=c24ced086a2cbb0eab00a4edecd652c9';
-redraw();
-}
+{ apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=reykjavik&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw(); }
 
-
-
+function honoluluselect()
+{ apiurl = 'https://api.openweathermap.org/data/2.5/weather?q=honolulu&appid=c24ced086a2cbb0eab00a4edecd652c9';
+redraw(); }
 
 function myloca()
 {
-
-  setup();
+setup();
       // let a = navigator.geolocation.getCurrentPosition(showPosition);
 redraw();
-
 }
-
 
 
 
@@ -86,7 +75,60 @@ btnreykjavik.onclick = reykjavikselect;
 
 var btnmylocation = document.getElementById("mylocation");
 btnmylocation.onclick = myloca;
+
+
+var btnhonolulu = document.getElementById("honolulu");
+btnhonolulu.onclick = honoluluselect;
+
+
+var btnprint = document.getElementById("print");
+btnprint.onclick = printCanvas;
+
+
+
+
+
+// var win=window.open();
+//   write =  win.document.write("<br><img src='"+canvas.toDataURL()+"'/>");
+//
+//    if (write.complete) {
+//      win.print();
+//
+//      win.focus();
+//     win.print();
+//     win.close()
+//
+//     } else {
+//       draw(); };
+
+
 }
+
+
+
+function printCanvas()
+{
+    //var dataUrl = document.getElementById('defaultCanvas0').toDataURL(); //attempt to save base64 string to server using this var
+
+
+var imgg = document.getElementById("defaultCanvas0");
+
+          var windowContent = "<br><img src = '"+canvas.toDataURL()+"'/>";
+
+
+
+
+
+var printWin = window.open('','','width=800,height=400');
+printWin.document.write(windowContent);
+printWin.focus();
+printWin.print();
+printWin.close();
+
+
+}
+
+
 
 
 
@@ -158,12 +200,15 @@ return windvalue;
 
 function setup() {
 
+
+
    long = 0;
    latt = 0;
        let a = navigator.geolocation.getCurrentPosition(showPosition);
 
-       let renderer = createCanvas(canw, canh);
+       let renderer = createCanvas(canw, canh, P2D);
        renderer.parent("mycan");
+
 angleMode(DEGREES);
 
   // Define colors
@@ -186,6 +231,10 @@ angleMode(DEGREES);
 
   f1 = color(100,0,170);
   f2 = color(252,87,0);
+
+
+
+
 
 
 
@@ -228,15 +277,14 @@ url = loadJSON(apiurl, gotData);
 
 
     //Statement for lat, lon take through geo-location
-//url = loadJSON('https://api.openweathermap.org/data/2.5/weather?lat='+latt+ '&lon=' + long + '&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
-//url = loadJSON('https://api.openweathermap.org/data/2.5/weather?q=bangalore&appid=c24ced086a2cbb0eab00a4edecd652c9', gotData);
+
 function gotData(data) {
 
    weather = data;
     winDeg = weather.wind.deg;
     clouds = weather.clouds.all;
     mylatitude = weather.coord.lat;
-    mylongitude = weather.coord.lat;
+    mylongitude = weather.coord.lon;
 
 
     //
@@ -260,6 +308,19 @@ function gotData(data) {
   dateObj = new Date(utcatlocation * 1000);
   utcString = dateObj.toUTCString();
   hourslice = (utcString.slice(-12, -10))*1;
+  mydaynum = dateObj.getUTCDay();
+
+
+
+  var daylist = { 0 : "Sunday",
+           1 : "Monday",
+            2 : "Tuesday",
+            3 : "Wednesday",
+            4 : "Thursday",
+            5 : "Friday",
+            6 : "Saturday",
+         };
+
 
 
 //console.log(timezone);
@@ -268,13 +329,8 @@ function gotData(data) {
 //console.log(utcString);
     console.log(hourslice);
 
-
     //var hours = date.getHours();
     //var minutes = date.getMinutes();
-
-
-
-
 
 
     feelslike = weather.main.feels_like;
@@ -287,10 +343,9 @@ function gotData(data) {
     console.log('my latitude ' + mylatitude);
     console.log('my latitude ' + mylongitude);
 
+    main = weather.weather[0].main;
 
 
-
-   main = weather.weather[0].main;
   //  console.log(weather.wind.deg);
     //console.log(weather.main.temp_min);
    // console.log(winDeg);
@@ -349,22 +404,28 @@ function gotData(data) {
 
 
 
-              mymonth = date.toLocaleString('default', { month: 'long' });
+    mymonth = date.toLocaleString('default', { month: 'long' });
+
+
+
+    fmonth = mymonth.toLowerCase();
 
     var message = 'As im writing you this '  + mymonth.toLowerCase() + ' ' + mytime()  +  '. The weather outside is ' +  main + 'y, ' + cloudsfun(clouds)+ ' but it feels ' + cold(feelslikec);
 
-     var footer= 'From somewhere around ' + loc + '.' ;
+    var footer= 'From somewhere around ' + loc + '.' ;
 
 
   push();
-     translate(0,-100);
- rotate(winDeg);
+  translate(0,-100);
+  rotate(winDeg);
 
-for(var x= -1000; x<6500; x=x+winSpeline) {
+  for(var x= -1000; x<6500; x=x+winSpeline) {
 
 
   push();
+  strokeWeight(2);
   stroke(255,255,255, 80);
+
   blendMode(HARD_LIGHT);
   line(x,-1600,x,3200);
   pop()
@@ -375,52 +436,51 @@ for(var x= -1000; x<6500; x=x+winSpeline) {
   pop();
 
 
-
-
-
-  if (hourslice>=7 && hourslice<=19) {
-    push();
-    noStroke();
-    blendMode(SOFT_LIGHT);
-    fill(0,clouds*0.01*255);
-    circle(random(0,800),0, random(clouds*3,clouds*8));
-    circle(0,random(0,480), random(clouds*3,clouds*8));
-    circle(800,random(0,480), random(clouds*3,clouds*8));
-    circle(random(0,800),480, random(clouds*3,clouds*8));
-    pop();
-    console.log('im putting black clouds');
-  }
-  else {
-
-    push();
-    noStroke();
-    blendMode(SOFT_LIGHT);
-    fill(255,clouds*0.01*255);
-    circle(random(0,800),0, random(clouds*3,clouds*8));
-    circle(0,random(0,480), random(clouds*3,clouds*8));
-    circle(800,random(0,480), random(clouds*3,clouds*8));
-    circle(random(0,800),480, random(clouds*3,clouds*8));
-    pop();
-    console.log('im putting white clouds');
-  }
 //return cloudcolor;
 function circlo() {
 if (hourslice>=7 && hourslice<19) {
 
   cicleincolor = '';
-
 }
 
 else {
-
     cicleincolor = '255, 255, 255';
 }
 
 return cicleincolor;
-
-
 }
 
+
+
+
+
+
+
+if (hourslice>=8 && hourslice<=19) {
+  push();
+  noStroke();
+  blendMode(SOFT_LIGHT);
+  fill(0,clouds*0.09*255);
+  circle(random(0,800),0, random(clouds*3,clouds*8));
+  circle(0,random(0,480), random(clouds*3,clouds*8));
+  circle(800,random(0,480), random(clouds*3,clouds*8));
+  circle(random(0,800),480, random(clouds*3,clouds*8));
+  pop();
+  console.log('im putting black clouds');
+}
+else {
+
+  push();
+  noStroke();
+  blendMode(SOFT_LIGHT);
+  fill(255,clouds*0.09*255);
+  circle(random(0,800),0, random(clouds*3,clouds*8));
+  circle(0,random(0,480), random(clouds*3,clouds*8));
+  circle(800,random(0,480), random(clouds*3,clouds*8));
+  circle(random(0,800),480, random(clouds*3,clouds*8));
+  pop();
+  console.log('im putting white clouds');
+}
 
 
     for(var i=0+feelslikecircle/2; i <800; i=i+feelslikecircle) {
@@ -428,49 +488,82 @@ return cicleincolor;
        for(var j=0+feelslikecircle/2; j<440; j=j+feelslikecircle) {
 
 
-         push();
-         noStroke();
-         fill(226,0,255);
-         circle(i*1.5,j*1.5,feelslikecircle);
-         pop()
+        //  push();
+        //  noStroke();
+        //  blendMode(SOFT_LIGHT);
+        //  fill(226,255,255);
+        //  circle(i*1.8,j*1.8,feelslikecircle*1.2);
+        //  pop()
+        //
+        //  push();
+        //  translate(i*(feelslikecircle/15),j*(feelslikecircle/15));
+        //  fill(255,0,255);
+        //   noStroke();
+        //
+        //  // blendMode(SCREEN);
+        //  blendMode(HARD_LIGHT);
+        //  stroke(0);
+        //  strokeWeight(1);
+        //  noFill();
+        //  rotate(winDeg);
+        //  rectMode(CENTER);
+        // rect(feelslikecircle/9, feelslikecircle/9,  feelslikecircle/3, feelslikecircle*1.2);
+        //  pop();
+        //
+        // push();
+        //
+        // translate(i*1.8,j*1.8);
+        // blendMode(MULTIPLY);
+        // rotate(winDeg);
+        // noStroke();
+        // fill(0, 50);
+        // circle(0,feelslikecircle/2*0.7,feelslikecircle/6);
+        // pop();
+        //
 
-         push();
-         translate(i*1.5,j*1.5);
-         fill(255,226,0);
-         noStroke();
-         rotate(winDeg);
-         rectMode(CENTER);
-         rect(0, 0, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle, feelslikecircle/4);
-         pop();
 
-        push();
 
-        translate(i*1.5,j*1.5);
-        blendMode(MULTIPLY);
-        rotate(winDeg);
-        noStroke();
-        fill(0, 50);
-        circle(0,feelslikecircle/2*0.7,feelslikecircle/6);
+            push();
+            noStroke();
+            fill(255,0,255);
+            circle(i*1.7,j*1.7,feelslikecircle);
+            pop()
 
+            push();
+            translate(i*1.7,j*1.7);
+            fill(255,226,0);
+            noStroke();
+            rotate(winDeg);
+            rectMode(CENTER);
+            // rect(feelslikecircle/9, feelslikecircle/9, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle, feelslikecircle/4);
+            rect(feelslikecircle/9, feelslikecircle/9, random(feelslikecircle/2, feelslikecircle/5), feelslikecircle*1.2, feelslikecircle/4);
             pop();
-       }
+
+           push();
+
+           translate(i*1.7,j*1.7);
+           blendMode(MULTIPLY);
+           rotate(winDeg);
+           noStroke();
+           fill(0, 50);
+           circle(feelslikecircle/9,feelslikecircle/2*0.7,feelslikecircle/6);
+
+               pop();
+        }
       }
 
 
     angleMode(DEGREES);
-    fill('white');
-    //rect(0,400,300,100);
-    //fill('black');
-    //text(message, 15, 410, 270, 350);
-  //  text(footer, 15, 470, 270, 350);
-  textSize(36);
-  stroke(100);
-  textStyle(BOLD);
-  textLeading(38);
-  text(message, 15, 15, 400, 600);
-  textSize(18);
-  textStyle(BOLD);
-  text(footer, 15, 300, 400, 600);
+  //   fill('white');
+  //
+  // textSize(36);
+  // stroke(100);
+  // textStyle(BOLD);
+  // textLeading(38);
+  // text(message, 15, 15, 400, 600);
+  // textSize(18);
+  // textStyle(BOLD);
+  // text(footer, 15, 300, 400, 600);
 
 
     console.log(message)
@@ -478,7 +571,160 @@ return cicleincolor;
     //console.log(winSpe);
 
 
-}
 
-  noLoop();
+
+
+    var lexicon = new RiLexicon();
+
+
+      weather = ['cloudy', 'Hazy', 'Rainy', 'Cleary', 'Sonwy', 'smokey'];
+      daytime = ['morning', 'afternoon', 'evening', 'night'];
+      months = ['January', 'April', 'December', 'July', 'September'];
+      temp = ['Hot', 'Cold', 'great', 'warm', 'freezing cold'];
+      clouds = ['clear', 'cloudy', 'dark and cloudy', 'scattered clouds', 'a bit cloudy'];
+      test = ['December', 'september'];
+      //mymonth = ['December', 'september'];
+      mylocation = ['Hyderabad', 'Bengaluru'];
+      hrsfromsun = ['sunset is far', 'sunset is here', 'sunset is near'];
+    //  myday = ['sunday', 'monday'];
+
+      fweather = main + 'y';
+      fdaytime = samay;
+
+      fmyday = daylist[mydaynum];
+      console.log(fmyday);
+      ftemp = random(temp);
+      // fclouds = random(clouds);
+      fclouds = cloudcover;
+
+      fmylocation = loc;
+      fhrsfromsun = random(hrsfromsun);
+
+
+
+              lexsenA = lexicon.randomWord('jj') +' ' + lexicon.randomWord('nn') + ' ' +lexicon.randomWord('md') + ' ' + lexicon.randomWord('vbp');
+              lexsenB = lexicon.randomWord('cd') + ' ' + lexicon.randomWord('jj') + ' ' + lexicon.randomWord('nns');
+              lexsenC = lexicon.randomWord('nn') + ' ' + lexicon.randomWord('md') + ' ' + lexicon.randomWord('rb') + ' ' + lexicon.randomWord('vb');
+              lexsenD = lexicon.randomWord('jj') + ' ' + lexicon.randomWord('md') + ' ' + lexicon.randomWord('vbp');
+              lexsenE = lexicon.randomWord('jjs') + ' ' + lexicon.randomWord('md') + ' ' + lexicon.randomWord('rbs');
+              lexsenF = lexicon.randomWord('dt') + ' ' + lexicon.randomWord('jj') + ' ' + lexicon.randomWord('vbn');
+              lexsenG = lexicon.randomWord('jj') + ' ' + lexicon.randomWord('vbn') + ' ' + lexicon.randomWord('jj');
+              lexsenH = lexicon.randomWord('dt') + ' ' + lexicon.randomWord('vb') + ' ' + lexicon.randomWord('rb');
+              lexsenI = lexicon.randomWord('nn') + ' ' + lexicon.randomWord('vbp') + ' ' + lexicon.randomWord('nns');
+              lexsenJ = lexicon.randomWord('nn') + ' ' + lexicon.randomWord('md') + ' ' + lexicon.randomWord('rb') + ' ' + lexicon.randomWord('vb');
+              lexsenK = lexicon.randomWord('md') + ' ' + lexicon.randomWord('vb') + ' ' + lexicon.randomWord('rb');
+
+
+              console.log(lexsenA);
+              console.log(lexsenB);
+              console.log(lexsenC);
+              console.log(lexsenD);
+              console.log(lexsenE);
+              console.log(lexsenF);
+              console.log(lexsenG);
+              console.log(lexsenH);
+              console.log(lexsenJ);
+              console.log(lexsenK);
+
+
+              var sen1 = ["At "+ fmylocation, "Its " + fmyday, "A " +fweather+" morning",  fmylocation + " postcards", fdaytime + " is falling", fdaytime + " stillness", fmyday + ' ' + fdaytime, fdaytime + " Traffic", "A " + fweather + ' ' + fmyday + ' '+ fdaytime];
+              var sen2 = ["A frog jumps", "Donkeys flank", "The worm wiggles", "A parrot asks " + lexicon.randomWord('rb'),  "The oceans loud", "A cat watches traffic", "A cat watches " + fdaytime + " traffic", "A cat watches " + fmonth + " traffic", "The parrot sings " + lexicon.randomWord('rb'), "Two butterflies warm the road", "Spider webs and plastic bags", "Someone is upset", "Empty bottle " + lexicon.randomWord('vbz') +' ' + lexicon.randomWord('rb'), "A loudspeaker barks", "A frog jumps", "Leaves tremble", "A silkworm spinning", "A worm digs silently still",  "A fly crosses the street",  "Traffic light turn green", "A sparrow bathes", "The sunflower drips", "A sparrow takes a dust bath", "A sparrow chips","Road and sky align", "A butterfly trapped", "An ant climbs",  "The birds cry", "Bullfrogs croak",  "A cow stares the road", "Buzzards wait", "Leaves fall",   "Dead batteries", "The cat watches", "Who cares how stocks did",  "Butterfly wings clap" , "my shadow grows", "my shadow grows " + lexicon.randomWord('rb'), "Obama is busy", fdaytime + " is falling" ];
+
+              var senb2 = ["At "+ fweather, "A " +fweather + ' ' + fdaytime, fdaytime + " stillness", fmyday + " " + fdaytime, fweather + ' ' + fmyday + ' ' + fdaytime];
+              var senc1 = ["At "+ fmylocation, "Its " + fmonth, "A " + fweather + ' '+ fmonth, fmonth +" postcards ", fmonth +" stillness", fmonth + " " + fdaytime, fmyday + ' ' + fmonth + " Traffic", "A " + fweather + ' ' + fmyday + ' ' +  fdaytime ];
+              var senc3 = [fdaytime + " passes in " + fmylocation , "A sunflower drips at " + fmylocation , "A bus passes by in " + fmylocation , "Another " + fdaytime +" is falling", "A sparrow chips " + fmylocation  ];
+
+
+
+
+                      rg = new RiGrammar();
+                      rg.addRule("<start>"," % <line-a1> % <line-a2> % <line-a3> |  % <line-b1> % <line-b2> % <line-b3> |  % <line-c1> % <line-c2> % <line-c3> |  % <line-d1> % <line-d2> % <line-d3> |  % <line-e1> % <line-e2> % <line-e3>  " , 1);
+
+
+                      rg.addRule("<line-a1>",RiTa.randomItem(sen1), 1);
+                      rg.addRule("<line-a2>",RiTa.randomItem(sen2), 1);
+                      rg.addRule("<line-a3>",lexsenG + ' | '+ lexsenF, 1);
+
+                      rg.addRule("<line-b1>",RiTa.randomItem(sen2), 1);
+                      rg.addRule("<line-b2>",RiTa.randomItem(senb2), 1);
+                      rg.addRule("<line-b3>",lexsenI, 1);
+
+                      rg.addRule("<line-c1>",RiTa.randomItem(senc1), 1);
+                      rg.addRule("<line-c2>",RiTa.randomItem(sen2), 1);
+                      rg.addRule("<line-c3>",RiTa.randomItem(senc3), 1);
+
+                      rg.addRule("<line-d1>",lexsenJ, 1);
+                      rg.addRule("<line-d2>",RiTa.randomItem(sen2), 1);
+                      rg.addRule("<line-d3>",RiTa.randomItem(sen1), 1);
+
+                      rg.addRule("<line-e1>", RiTa.randomItem(senc1), 1);
+                      rg.addRule("<line-e2>",lexsenK, 1);
+                      rg.addRule("<line-e3>",RiTa.randomItem(sen2), 1);
+
+
+                      rg2 = new RiGrammar();
+                      rg2.addRule("<word-5>",  " Good "  + fdaytime + " from " + "<locationdeg>"  + " | " + " Somewhere around " + "<locationdeg>" + " |  " + "<locationdeg>" + " Says hi" + " | " + " Wishes from " + "<locationdeg>"  + " | " + " with love from " + "<locationdeg>"  , 1);
+
+rg2.addRule("<locationdeg>", mylatitude +', ' + mylongitude +" | " + fmylocation)
+
+
+
+
+                      var expanded = rg.expand();
+                      console.log(expanded);
+
+
+
+                      var haiku = expanded.split("%");
+                      // haikuupper2 = haiku[0].toUpperCase() +
+                      //   haiku.slice(1);
+
+                      for (let i = 0; i < haiku.length; i++) {
+
+                      console.log(haiku[i]);
+
+
+
+
+                      fill('white');
+
+                    textSize(36);
+                    stroke(100);
+                    textStyle(BOLD);
+                    textLeading(38);
+                      stroke(0);
+                      strokeWeight(1);
+                  //    noStroke();
+                      text(haiku[i], 10, 160+(40*i));
+
+                      }
+
+                      push();
+                      translate(780,470);
+                      rotate(90);
+
+                      textSize(12);
+                      stroke(100);
+                      textStyle(BOLD);
+                      textAlign(RIGHT);
+
+
+                      rg2.addRule("<start>","<word-5>", 1);
+                      endstatement = rg2.expand();
+
+                     rs = new RiString(endstatement);
+
+
+                      text(rs.toUpperCase(), 0, 0);
+                      console.log(endstatement);
+                      pop();
+
+
+//
+// save(cnv, 'myCanvas.jpg');
+//
+ }
+ noLoop();
+
+
 }
